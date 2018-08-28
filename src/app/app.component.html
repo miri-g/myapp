@@ -1,0 +1,28 @@
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <div class="row">
+          <div class="col-md-6 input-group">
+            <input type="text" #search (keyup.enter)="getRepo(search.value)" class="form-control form-control-sm ml-3 w-75"  placeholder="Search" aria-label="Search">
+            <span class="input-group-btn">
+              <button type='button' class="btn btn-default" (click)="getRepo(search.value)">Search</button>
+            </span>
+          </div>
+    </div>
+
+    <div>
+      <h3>Search Results</h3>
+      <h4 class="lead"><strong class="text-danger">{{res.total_count}}</strong> results were found for the search <strong class="text-danger">{{search.value}}</strong></h4>								
+    </div>
+      
+    <div class="col-lg-4 col-md-2 col-sm-2 col-xs-6" *ngFor="let item of res.items">
+        <img src="{{item.owner.avatar_url}}" class="img-thumbnail">
+        <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+            <button type='button' class="btn btn-default pull-left" (click)="bookmark(item.node_id)"><span><i class="glyphicon glyphicon-bookmark" aria-hidden="true"></i>
+            </span></button>
+            <h5 class="">{{ item.name }}</h5>
+
+          </div>
+    </div>
+
+
+</div>
